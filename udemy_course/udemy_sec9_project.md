@@ -159,6 +159,7 @@ console.log(btn.dataset);
 ---
 ---
 # Water Flow
+### Search.js + searchView.js
 >**[模块M]** 首先建立 **`Model/Search.js`** 里面的class `Search` 
 
 >**[模块C]** 建立 **`Search Controller`**，async 函数，5个步骤
@@ -169,7 +170,7 @@ console.log(btn.dataset);
 4. search for recipes `实现返回菜单`
 5. render the result on UI `实现recipe部署, 在view里面实现`
 
->**[模块V]** 建立 **`Search View`** 
+>**[模块V]** 建立 **`searchView.js`** 
 
 1. searchInput( ) `实现Input输入`
 2. renderResults( ) -> forEach -> 通过renderRecipe( ) `实现recipe的部署`
