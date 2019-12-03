@@ -207,8 +207,11 @@ const test = new Recipe(6523)
     </div>
 ```
 
+### 2.5 fractional `view/recipeView.js`
+小数decimal --> 分数fraction
 
-
+### 2.6 highlightSelected( ) `view/searchView.js`
+把当前选中的recipe高亮
 
 
 
@@ -290,7 +293,26 @@ const id = window.location.hash.replace('#', '');
 
 3. `e.target.closest('.class')` 找到 target 最近的 class
 ```js
-const btn = e.target.closest('.btn-inline');
+elements.searchResPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if (btn) { 
+        const goToPage = parseInt(btn.dataset.goto, 10); //dataset, 10
+        searchView.clearRes();
+        searchView.renderResults(state.search.result, goToPage);
+    }
+}
+/**
+* 顺便总结其他 targe 方法
+
+closest()     
+    Element.closest() 方法用来获取：匹配特定选择器且离当前元素最近的祖先元素（也可以是当前元素本身）。如果匹配不到，则返回 null。
+    - 想要激活一整个item的时候用, 比如翻页键
+    - 任意点击里面的元素, 都会target到最上层, 并定位到goto 等ID
+
+matches() 
+    - 直接找到定位某个元素, 返回true or false
+
+ */
 ```
 
 4. `str.toLowerCase( )` 把 string 变为小写
@@ -311,5 +333,15 @@ const btn = e.target.closest('.btn-inline');
         count = eval(arrIng.slice(0, unitIndex).join('+'));
     }
 ```
+
 8. `eval()` 函数会将传入的字符串当做 JavaScript 代码进行执行。  
 `同上`
+
+9. `fraction` 这个包的使用, 把 小数 decimal ---> 分数 fraction
+```js
+    import { Fraction } from "fractional";
+
+    const [int, dec] = count.toString().split('.').map(el => parseInt(el, 10));
+    const fr = new Fraction(count);
+    return `${fr.numerator}/${fr.denominator}`;
+```
