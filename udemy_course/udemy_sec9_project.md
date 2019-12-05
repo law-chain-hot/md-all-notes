@@ -96,7 +96,7 @@ Get the `input` from the UI, and convert this `input` into Search controller
 3. 在`renderRecipe`里面用 `markup` 代表HTML内容接着使用 
 `elements.searchResList.insertAdjacentHTML('beforeend', markup);`
 ```js
-// **痛苦的Debug**
+// 痛苦的Debug
 卧槽,记得 querySelector(.class) 选class的时候,一定要用copy,一字之差都
 不不行, //亚麻色头发的少女
 ```
@@ -146,7 +146,7 @@ console.log(btn.dataset);
 ```
 
 ```js
-// **痛苦的Debug**
+// 痛苦的Debug
 上面的data-goto, 我写成了data-togo
 ```
 
@@ -181,7 +181,7 @@ export default class Recipe {
 然后把所有数据从拿到 res 拿到 --> 交给 --> Recipe 这个 class
 
 ```js
-// **痛苦的Debug**
+// 痛苦的Debug
 调用 `class Recipe` 到时候, 一定要用
 const test = new Recipe(6523) 
 ```
@@ -189,7 +189,6 @@ const test = new Recipe(6523)
 
 ### 2.2 Recipe Controller in `index.js`
 还是挺复杂的, 只呈现最后结果
-
 
 ### 2.3 parseIngredients( ) in `model/Recipe.js`
 挺复杂的, 但是不是很想写了, 就是 `ingredients string` 转化为 `objcect`
@@ -213,8 +212,13 @@ const test = new Recipe(6523)
 ### 2.6 highlightSelected( ) `view/searchView.js`
 把当前选中的recipe高亮
 
-
-
+### 2.7 updateServings( ) `model/Recipe.js`
+然后在 `index.js` 里面加入 addEventListener, 使用target.matches( ), 去定位button, 最后在 `view/searchView.js` 里面更新 render
+```js
+// 痛苦的Debug
+obj里面的元素, 比如 obj.xx 如果没有xx
+将返回undefine, 这样真的很难debug啊
+```
 
 
 
@@ -301,6 +305,7 @@ elements.searchResPages.addEventListener('click', e => {
         searchView.renderResults(state.search.result, goToPage);
     }
 }
+
 /**
 * 顺便总结其他 targe 方法
 
