@@ -222,6 +222,76 @@ obj里面的元素, 比如 obj.xx 如果没有xx
 
 
 
+## 3. 建立 List
+### 3.1 创建 `List` class in `mode/List.js`
+里面包含了4个method( )  
+其中 item 被存在一个数组里面
+```js
+constructor() {
+    this.items = [];
+}
+```
+
+### 3.2 创建 `listView` in `view/listView.js`
+老一套 renderItem( )
+
+```js
+export const renderItem = item => {
+    const markup = `在index.html里面找具体的代码`;
+    elements.shopping.insertAdjacentHTML('beforeend', markup);
+};
+export const deleteItem = id => {
+    const item = document.querySelector(`[data-itemid="${id}"]`);
+    if (item) item.parentElement.removeChild(item);
+};
+```
+
+### 3.3 在 `index.js` 里面创立 `listController`
+```js
+new List( );
+item = 
+renderItem(item);
+```
+
+```js
+// Handle delete and update list item events
+elements.shopping.addEventListener('click', el => {
+    // Get the id of item
+    const id = el.target.closest('.shopping__item').dataset.itemid;  //确保每次点击能得到 ID
+
+    // Handle the Delete button
+    if (el.target.matches('.shopping__delete, .shopping__delete *')){
+        // Delete from state
+        state.list.deleteItem(id);
+
+        // Delete from UI
+        listView.deleteItem(id);
+    } 
+    // Handle the update
+    else if (el.target.matches('.shopping__count-value')){
+        const val = parseFloat(el.target.value, 10);
+        state.list.updateCount(id, val);
+    }
+});
+
+
+
+这段代码, 很有意思
+1. 选择到ID, 然后这个ID通过uniqID加的, 加到了class里面, 像这样
+   <li class="shopping__item" data-itemid=${item.id}>
+   
+2. 用 match 可以精确定位到 delete btn
+    - 执行 state 里面的删除
+    - 执行 UI 里面的删除
+
+3. el.target.value 可以直接得到输入的 string
+    <input type="number" value="${item.count}" step="${item.count}" 
+    class="shopping__count-value">
+```
+
+
+
+
 
 ---
 ---
@@ -263,7 +333,15 @@ obj里面的元素, 比如 obj.xx 如果没有xx
 
 >**[模块V]** 建立 **`recipeView.js`**, render our recipes 
 
+- highlightSelected( )
+- updateServing( )
 
+
+### 3. List.js + listView.js
+就那样
+
+
+### 4. Like.js + likeView.js
 
 
 
@@ -310,9 +388,11 @@ elements.searchResPages.addEventListener('click', e => {
 * 顺便总结其他 targe 方法
 
 closest()     
-    Element.closest() 方法用来获取：匹配特定选择器且离当前元素最近的祖先元素（也可以是当前元素本身）。如果匹配不到，则返回 null。
+    Element.closest()方法用来获取：匹配特定选择器且离当前元素最近的祖先
+    元素（也可以是当前元素本身）。如果匹配不到，则返回 null。
     - 想要激活一整个item的时候用, 比如翻页键
     - 任意点击里面的元素, 都会target到最上层, 并定位到goto 等ID
+    - 想得到parent的ID的时候
 
 matches() 
     - 直接找到定位某个元素, 返回true or false
@@ -350,3 +430,14 @@ matches()
     const fr = new Fraction(count);
     return `${fr.numerator}/${fr.denominator}`;
 ```
+
+10. `array.splice( )` && `arrary.slice( )`
+```js
+//可以用作delete item
+Array.splice(start, num)   返回被拿出来的值, 并改变原Array, num代表从start开始往后第几个
+
+//可以用作, 不知道
+Array.slice(start, end)    返回拿出来的数组, 不改变原Array, [start, end)
+```
+
+11. `uniqid` 这个包可以提供 **Unique ID** .
