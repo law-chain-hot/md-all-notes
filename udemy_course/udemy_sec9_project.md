@@ -290,6 +290,29 @@ elements.shopping.addEventListener('click', el => {
 ```
 
 
+## 4. Like.js + likeView.js
+就那样
+
+
+## 5. localStorage
+```js
+// 痛苦的debug
+在 class 里面的 function 调其他内部 function, 需要用到 this.
+```
+
+```js
+    // Presist
+    persistDate() {
+        localStorage.setItem('likes', JSON.stringify(this.likes));
+    }
+
+    readStorage() {
+        const storage = JSON.parse(localStorage.getItem('likes')); // if not, return null
+        
+        // Restore likes from localStorage
+        if (storge) this.likes = storage;
+    }
+```
 
 
 
@@ -342,6 +365,11 @@ elements.shopping.addEventListener('click', el => {
 
 
 ### 4. Like.js + likeView.js
+就那样
+
+### 5. localStorage
+使 likes 在 reload 之后依旧存在
+
 
 
 
@@ -369,7 +397,8 @@ const id = window.location.hash.replace('#', '');
  * - submit
  * - keypress 表示可以用于按回车Enter时fire
  * - change 表示下拉栏改变时变化
- * - ...
+ * - load 当然是reload的时候
+ * - 
  * /
 ```
 
@@ -441,3 +470,25 @@ Array.slice(start, end)    返回拿出来的数组, 不改变原Array, [start, 
 ```
 
 11. `uniqid` 这个包可以提供 **Unique ID** .
+
+
+12. `localStorage`, 在 reload 之后依旧保存数据
+```js
+    // Presist
+    persistDate() {
+        localStorage.setItem('likes', JSON.stringify(this.likes));
+    }
+
+    readStorage() {
+        const storage = JSON.parse(localStorage.getItem('likes')); // if not, return null
+        
+        // Restore likes from localStorage
+        if (storge) this.likes = storage;
+    }
+```
+
+
+13. 操控一个class的css属性
+```js
+elements.likesMenu.style.visibility = numLikes > 0 ? 'visible' : 'hidden';
+```
