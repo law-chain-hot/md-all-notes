@@ -1,5 +1,6 @@
-# md-all-notes
-所有front-end相关学习记录
+# Md-All-Notes
+所有Front-End相关学习记录  
+All records of the learning of Front-End
 
 ### Project
 [1. Recipe Project Note](https://github.com/law-chain-hot/md-all-notes/issues/4)
