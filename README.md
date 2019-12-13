@@ -7,4 +7,4 @@ All records of the learning of Front-End
 
 ### Basic Knowledge
 [1. Basic JavaScript](https://github.com/law-chain-hot/md-all-notes/issues/5)  
-[2. Basic Node.js](https://github.com/law-chain-hot/md-all-notes/issues/5)
+[2. Basic Node.js](https://github.com/law-chain-hot/md-all-notes/issues/6)
