@@ -55,8 +55,20 @@ It is easy to build the navigation for the webpage.
 
 
 ## 3. Less && Sass
+**What should be in the script**  
 `less: lessc styles.less styles.css`
 `sass: node-sass -o css/ css/`
+
+**How to use or install them**  
+`npm install -g less`  
+`npm install --save-dev node-sass `
+
+```js
+// Briefly 
+// Sass(scss) is for node-sass
+// less is for less
+```
+
 ```css
 /* ---------------------------------------------------- */
 /* Less */
@@ -65,7 +77,12 @@ It is easy to build the navigation for the webpage.
 .zero (@parameter1: 0px, @para2: 0px) {
     margin:0px auto;
 	padding: @pad-up-dn @pad-left-right;
+}
 
+.row-content {
+    .zero-margin(50px,0px);     /* How to use variable .zero */
+    border-bottom: 1px ridge;
+    min-height:400px;
 }
 
 
@@ -79,11 +96,14 @@ $background-dark: dark;
 }
 
 .row-content {
-    @include zero-margin(50px, 0px);  /* @include is essential*/
-    border-bottom: 1px ridge;
+    @include zero-margin(50px, 0px);  /* How to use variable zero-margin */
+    border-bottom: 1px ridge;         /* @include is essential*/
     min-height: 400px;
 }
 ```
+
+
+
 
 
 
