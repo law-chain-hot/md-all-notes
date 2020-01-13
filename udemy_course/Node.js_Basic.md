@@ -16,6 +16,7 @@ const json = fs.readFileSync(`${__dirname}/data/data.json`, 'utf-8');
 ### 3. 翻译JSON
 ```js
 const laptopData = JSON.parse(json);
+const xx = JSON.stringify(toJSON);
 ```
 
 ### 4. 检测是否有图片
